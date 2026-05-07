@@ -35,11 +35,11 @@ git pull          # kéo code mới nhất từ GitHub về máy
 git diff          # xem thay đổi cụ thể trong file
 git branch        # xem đang ở nhánh nào
 
-Quy trình hàng ngày chỉ cần nhớ 3 lệnh:
+   Quy trình hàng ngày chỉ cần nhớ 3 lệnh:
 git add .
 git commit -m "hôm nay làm gì"
 git push
 """
 
     #gộp 1 lần 3 câu lệnh
-#git add . && git commit -m "Day 2 update" && git push
+#git add . && git commit -m "Day n update" && git push
