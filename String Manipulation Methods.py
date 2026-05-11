@@ -55,10 +55,13 @@ print("42".zfill(7)) #0000042
 
     #islower(): kiểm tra xem có viết thường hết không >>> trả về true or false
     #isupper(): kiểm tra xem có viết hoa hết hay không >>>
-    #isdigit(): kiểm tra xem có là số hết không(có dấu cách cũng cho kết quả FALSE)
+    #isdigit(): kiểm tra xem có là số hết không, có thể chứa các ký tự đặc biệt như số mũ (có dấu cách cũng cho kết quả FALSE)(TRUNG CẤP) VD: 
     #isspace(): kiểm tra xem chuỗi tất cả có phải khoảng trắng hay không
     #isalpha(): kiểm tra xem có toàn chữ cái hay không( dấu cách cũng tính là FALSE)
-    #isalnum(): kiểm tra xem chỉ có chữ và số (có dấu cách cũng cho kết quả FALSE)
+    #isalnum(): kiểm tra xem chỉ có chữ và số (có dấu cách cũng cho kết quả FALSE) VD:12hdfshf;HDH88;...
+    #isdecimal(): kiểm tra xem có phải chỉ là số không( không được chứa cả dấu chấm,chỉ chứa ký tự số dạng thập phând )(NGHIÊM NGẶT NHẤT) VD: 123;54;78
+    #isnumeric(): kiểm tra xem chuỗic có phải dạng chuỗi hay không (có thể có phân số)(RỘNG NHẤT) VD:1/2;số la mã;...
 
     #sorted(): sắp xếp lại thứ tự ký tự từ thấp lên cao
+
 
