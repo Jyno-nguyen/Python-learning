@@ -1,0 +1,4 @@
+Model_A 0.85 LR=0.01 Batch=32
+Model_B 0.92 LR=0.005
+Dòng_Lỗi_Chỉ_Có_Một_Từ
+Model_C 0.78 Epoch=100 Opt=Adam
