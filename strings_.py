@@ -22,6 +22,7 @@ print(strc)
     #Toán tử nhân
 strd="nguyenvietha\n"
 stre=strd*5 
+#!Toán tử nhân với số <=0 thì trả về chuỗi rỗng: VÀ NÓ VẪN LÀ 1 CHUỖI('') CHỨ KHÔNG GIỐNG NHƯ None: ĐẠI DIỆN CHO VIỆC KHÔNG CÓ GIÁ TRỊ
 
     #Toán tử in: trả về TRUE OR FALSE
 strf="i"
@@ -96,7 +97,7 @@ s[-16:-14]
 # - index vượt quá báo lỗi khi truy cập đơn: s[100] → IndexError
 # - step âm = đi ngược
 
-    #Định dạng bằng toán tử %
+    #!Định dạng bằng toán tử %
 per="i'm %s %s %s years old" %('15','16','17') # i'm 15 years old 
 per2='%s %s'
 print(per2 %('D','16')) # >>> D 16
@@ -104,12 +105,12 @@ print(per2 %('D','16')) # >>> D 16
 print("%d" % 3.9)      # 3 — chỉ lấy phần nguyên
 print("%i" % 3.9)      # 3 — giống %d
 
-    # Số thực
+    # !Số thực
 print("%f" % 3.14)     # 3.140000 — mặc định 6 chữ số thập phân
 print("%.2f" % 3.14)   # 3.14 — giới hạn 2 chữ số
 print("%e" % 3.14)     # 3.140000e+00 — dạng khoa học
 
-    # Chuỗi
+    #!Chuỗi
 print("%s" % "Jyno")   # Jyno
 print("%r" % "Jyno")   # 'Jyno'
 print("%10s" % "Jyno") #       Jyno — căn phải 10 ký tự
@@ -122,7 +123,7 @@ print("%s is %d years old" % ("Jyno", 21))  # Jyno is 21 years old
 
 
 
-    #ĐỊNH DẠNG BẰNG CHUỖI F-STRING
+    #?ĐỊNH DẠNG BẰNG CHUỖI F-STRING
 name= 'Nguyen Viet Ha'
 address="772 Kim Giang"
 Phone="0348597151"
@@ -139,13 +140,14 @@ print(f"Name:{{name}}\nAddress:{{address}}\nPhone:{{Phone}}")
 """
     #F-string cho phép thực hiện phép toán bên trong dấu ngoặc nhọn
 m=10;n=20
-print('s=m+n ='f"{m+n}") # 30
+print('s=m+n ='f"{m+n}") # 30 
+print(f'{n+m=}') # kết quả sẽ in ra n+m=30 ( cho phép thực hiện phép tính bên trong dấu ngoặc và in ra phép tính)
 
     #Lấy số thập phân
 import math
 print(f"{math.pi:.2f}") #3.14
 
-    #ĐỊNH DẠNG BẰNG PHƯƠNG THỨC FORMAT
+    #?ĐỊNH DẠNG BẰNG PHƯƠNG THỨC FORMAT
 s='a:{},b:{},c:{}'.format(2,4,5) #Trong ngoặc có thể điền nhiều số hơn nhưng không được thiếu, và số thứ tự đánh từ (0 đến n-1)
 print(s) # a:2,b:4,c:5
 s='a:%s,b:%s,c:%s' %(2,4,5) #a:2,b:4,c:5
@@ -162,4 +164,5 @@ s4='a:{two},b:{one},c:{}'.format(one=111,two=222) #a:222,b:111
 '{:(c)<10}'.format('aaaa') #Căn lề trái
 r='nguyen viet {:*^10} dep trai'.format("ha")
 print(r) #nguyen viet ****ha**** dep trai
+print("{:#>10.2f}".format(12.3)) #có thể kết hợp nếu muốn lấy số phần tập phân khi dùng format
 

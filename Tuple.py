@@ -6,7 +6,7 @@
 
 tup=()
 print(tup()) #()
-#!tup=(1),tup=("nguyenvie") khi khởi tạo tuple với 1 phần tử thì kiểu dữ liệu sẽ là của phần tử đó(int,str)
+#! tup=(1),tup=("nguyenvie") khi khởi tạo tuple với 1 phần tử thì kiểu dữ liệu sẽ là của phần tử đó(int,str)
 #! vì vậy khi muốn khởi tạo tuple với 1 phần tử duy nhất ta cần thêm dấu phảy tup(1,)
 
 
