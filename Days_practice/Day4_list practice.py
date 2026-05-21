@@ -1,9 +1,3 @@
-a = [[0]] * 3
-a[0].append(1)
-b = a
-print(b)
-      
-        
 # Bạn muốn tạo một ma trận 3x1 toàn số 0
 matrix = [[0]] * 3 
 # Kết quả nhìn có vẻ đúng: [[0], [0], [0]]
@@ -19,18 +13,16 @@ matrix[0].append(1)
     # Kết quả: [[0, 1], [0], [0]] -> Đúng ý bạn!
 
 
-### 2. Bẫy "Biến đổi tại chỗ" (In-place vs New Object)
+#! 2. Bẫy "Biến đổi tại chỗ" (In-place vs New Object)
 #Bẫy này xuất hiện khi có nhiều biến cùng trỏ vào một List.
-
-
 a = [1, 2]
 b = a # b và a dùng chung một List
 
-    # Trường hợp A: Dùng += hoặc *=
+    #* Trường hợp A: Dùng += hoặc *=
 a *= 2 # Sửa trực tiếp trên cái túi cũ (nên nếu gán cho 1 chuỗi khác thì cả 2 chuỗi sẽ bị sửa)
 print(b) # Kết quả: [1, 2, 1, 2] -> b bị ảnh hưởng!
 
-    # Trường hợp B: Dùng phép gán + hoặc *
+    #* Trường hợp B: Dùng phép gán + hoặc *
 a = [1, 2]
 b = a
 a = a * 2 # Tạo ra một cái túi mới hoàn toàn và gán cho a
@@ -50,8 +42,6 @@ print(b) # Kết quả: [1, 2] -> b không bị ảnh hưởng!
 #?Số, Chuỗi (Immutable)** | `[0] * 5` | **An toàn** |
 #?List, Dict (Mutable)** | `[[]] * 5` | **CỰC KỲ NGUY HIỂM** |
 #?Ma trận/List lồng** | `[[0]] * 5` | **CỰC KỲ NGUY HIỂM** |
-
-#!Mỗi khi bạn định gõ dấu `*` cho List, hãy khựng lại 1 giây và tự hỏi: "Trong List này có chứa một cái List khác không?". Nếu có, hãy chuyển sang dùng **List Comprehension** ngay lập tức!
 
 
 
@@ -73,24 +63,27 @@ print(max(names)) # Kết quả: "Cường"
 
 
 
-
-
 nums = [5, 2, 9, 1, 7, 6]
 # yêu cầu tìm số thứ 2 mà không dùng max (chú ý trường hợp có 2 hay nhiều số trùng nhau)
 
-#?Cách 1: hướng giải sẽ tạo ra 1 chuỗi rỗng rồi sau đó thêm lần lượt các số vào nếu trùng thì bỏ
-list_rong=[]
-for i in nums: #
-    if i not in list_rong:
-        list_rong.append(i)
-#sắp xếp list
-list_rong.sort()
-
-#nếu ít hơn 2 số thì không có số lớn thứ 2
-if len(list_rong)<2:
-    print("không có số lớn thứ 2")
+#?Cách 1:
+nums = [5, 2, 9, 1, 7, 6]
+nums_chuan=list(set(nums))
+sx=list.sort()
+if len(sx)<2:
+    print("không có số lớn t2")
 else:
-    print(list_rong[-2])
+    print(sx[-2])
+
+
+#!HOẶC: remove(max(sx))
+nums=[1,2,3,4,5,6,7,8,1,2,3,4,5,6,7,9,9,9,9,9]
+nums_chuan=list(set(nums))
+nums_chuan.remove(max(nums_chuan))
+print(max(nums_chuan))
+
+
+
 
 #?Cách 2: dùng max và second max
 #khởi tạo 2 biến cực nhỏ
@@ -111,37 +104,40 @@ print("số lớn thứ 2 là: ",max2)
 
 #?Tách chẵn lẻ thành 2 chuỗi khác nhau
 nums=[1,2,3,4,5,6,7,8,1,2,3,4,5,6,7,9,9,9,9,9]
-list_rong_c=[]
-list_rong_l=[]
-for i in nums[:]:
-    if i % 2==0:
-        if i not in list_rong_c:
-            list_rong_c.append(i)
-    else:
-        if i not in list_rong_l:
-            list_rong_l.append(i)
-print(list_rong_c)
-print(list_rong_l)
+nums_unique=set(nums)
+chan=[i for i in nums_unique if i%2==0 ]
+le=[i for i in nums_unique if i%2!=0]
+print(chan, le)
 
 
+#!HOẶC
+dic={0:[],1:[]}
+for i in nums_unique:
+    dic[i%2].append(i) #[i%2] nếu chẵn trả về 0 thì append(i) chui vô 0:[]
+                       #[i%2] nếu lẻ trả về 1 thì append(i) chui vô 1:[]
+print(dic)
+
+
+
+from collections import defaultdict  #!Tạo dict thông qua i%2: tức là i%2=0 hoặc 1 chúng sẽ tạo key thay cho mình, không phải khởi tạo
+nums = [1,2,3,4,5,6,7,8,1,2,3,4,5,6,7,9,9,9,9,9]
+phan_loai = defaultdict(list)
+# Chỉ duyệt qua các giá trị duy nhất để tối ưu hiệu suất
+for i in set(nums):
+    # i % 2 trả về 0 hoặc 1, dùng nó làm key để append luôn
+    phan_loai[i % 2].append(i)
+chan = phan_loai[0]
+le = phan_loai[1]
 
 
 
 
 #? lấy ra số nguyên rồi bình phương chúng tạo thành 1 list mới
 mixed = [2, 4, "", 6, "", 2, 8, " ", "Python"]
-ket_qua = []
+ket_qua = [i*i for i in mixed if isinstance(i,int)] #!nhưng chuỗi "34" thì không được
+final=[int(i)**2 for i in mixed if str(i).isdigit()]
 
-for i in mixed: #lặp trực tiếp qua phần tử
-    # 1. Kiểm tra nếu i là số nguyên (loại bỏ chuỗi, khoảng trắng...)
-    if type(i) == int:
-        
-        # 2. Tính bình phương
-        i_binh_phuong = i * i
-        
-        # 3. Kiểm tra trùng: Nếu kết quả này chưa có trong list thì mới thêm vào
-        if i_binh_phuong not in ket_qua:
-            ket_qua.append(i_binh_phuong)
+
 
 # 4. Sắp xếp tăng dần trước
 ket_qua.sort()
@@ -160,16 +156,21 @@ trai = ["Trái 1", "Trái 2", "Trái 3"]
 phai = ["Phải 1", "Phải 2", "Phải 3"]
 ket_qua = []
 
-# Dùng range để tạo ra các số 0, 1, 2 (tương ứng với các vị trí index)
 for i in range(len(trai)): #lặp gián tiếp qua số thứ tự
-    # Lấy phần tử ở vị trí i của list trai thêm vào
     ket_qua.append(trai[i])
-    
-    # Lấy phần tử ở vị trí i của list phai thêm vào ngay sau đó
     ket_qua.append(phai[i])
 
-print(ket_qua)
+#!HOẶC
+#? list(zip(trai, phai))= [('Trái 1', 'Phải 1'), ('Trái 2', 'Phải 2'), ('Trái 3', 'Phải 3')]
+for t, p in zip(trai, phai):
+    ket_qua.append(t)
+    ket_qua.append(p)
 
+
+#!HOẶC
+ket_qua = [item for pair in zip(trai, phai) for item in pair]
+#for "pair" in zip(trai, phai) lấy từng cặp ('Trái 1', 'Phải 1')
+#for item in pair:('Trái 1', 'Phải 1') lấy 'Trái 1' rồi tiếp theo lấy 'Phải 1'
 
 
 

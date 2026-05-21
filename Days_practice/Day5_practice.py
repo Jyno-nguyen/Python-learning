@@ -1,5 +1,5 @@
 #Cho một danh sách khách hàng gồm cả người lớn và trẻ em 
-#(ví dụ: ["Tuấn_25", "Hoa_10", "Nam_30"]). Hãy dùng vòng lặp và if-else để tách họ vào 2 List riêng biệt: nguoi_lon và tre_em
+#Hãy dùng vòng lặp và if-else để tách họ vào 2 List riêng biệt: nguoi_lon và tre_em
 ds = ["Tuấn_25", "Hoa_10", "Nam_30"]
 nguoilon, trem = [], []
 i = 0
@@ -13,9 +13,32 @@ while i < len(ds):
     else:
         trem.append(ten)
     i += 1
-
 print("Người lớn:", nguoilon)
 print("Trẻ em:", trem)
+
+#!HOẶC
+ds_lon=[i for i in ds if int(i.split('_')[1])>18]
+ds_tre=[i for i in ds if int(i.split('_')[1])<=18]
+
+#!HOẶC
+ds_=[i.split("_") for i in ds] #*[['Tuấn', '25'], ['Hoa', '10'], ['Nam', '30']]
+ds_lon=[ten for ten,tuoi in ds_ if int(tuoi)>18]
+ds_tre=[ten for ten,tuoi in ds_ if int(tuoi)<=18]
+
+
+#!HOẶC
+ds_={1:[],0:[]}
+for user in ds:
+    ten,tuoi=user.split("_")
+    ds_[int(tuoi)>18].append(ten) #Nếu tuổi lớn hơn thì thêm vào ds_[True]=[]
+                                  #Nếu tuổi nhỏ hơn thì thêm vào ds_[False]=[]
+print(f"ds trẻ em: {ds_[False]}")
+print(f"ds người lớn: {ds_[True]}")
+
+
+
+
+
 
 
 
@@ -37,6 +60,38 @@ while len(ds_id)>0:
     print(f"lần thứ: {count}, Name: {ten}, STT: {stt} ")
     count+=1
 
+#* TỐI ƯU
+ds= ["Nam", "Hoa", "Lan", "Tuấn"]
+so=[i for i in range(1,len(ds)+1)]
+ds_so=[[k,v] for k,v in zip(ds,so) ] #!có thể dùng enumerate() để tối ưu
+import random as r
+while len(ds_so):
+    rand=r.randint(0,len(ds_so)-1) #!phải chạy random một lần
+    ten,stt=ds_so.pop()
+    print(ten,stt)
+
+
+#*CODE CHUẨN NHẤT
+ds= ["Nam", "Hoa", "Lan", "Tuấn"]
+ds_so=list(enumerate(ds,start=1)) #[(1, 'Nam'), (2, 'Hoa')]
+                            #Tạo thành các cặp với stt tăn dần từ start
+import random as r
+r.shuffle(ds_so)            #Tráo các phần tử trong danh sách số
+while len(ds_so):
+    stt,ten=ds_so.pop()
+    print(ten,stt)
+
+#!Có thể dùng for
+r.shuffle(ds)
+for stt,ten in enumerate(ds,start=1):
+    print(ten,stt)
+
+
+
+
+
+
+
 
 
 
@@ -44,6 +99,8 @@ while len(ds_id)>0:
 #Nếu số nhập vào đã tồn tại, hãy báo lỗi. Nếu chưa, hãy lưu vào một Set để đảm bảo không bao giờ có sự trùng lặp
 ds_sdt={"0348597151","0347649851"}
 so=input()
+if not so.startswith("0"):
+    so="0"+so
 if so in ds_sdt:
     print("số điện thoại đã tồn tại")
 else:
@@ -53,23 +110,38 @@ else:
 
 #Cho một Dict thông tin cá nhân, trong đó có một số giá trị bị để trống (chuỗi rỗng "")
 #Hãy dùng vòng lặp để tìm và xóa các Key có giá trị rỗng đó.
-dic={"k1":1,"k2":2,"k3":3,"k4":"","k5":""}
+dic = {"k1":1, "k2":'', "k3":3, "k4":None, "k5":0,"k6":"      "}
 ep=list(dic.items())
 i=0
 while i<len(ep):
-    if ep[i][1]=='':
+    if str(ep[i][1]).strip()=='' or ep[i][1] is None :
         xoa=ep.pop(i)
     else:
         i+=1
 print(dict(ep))
 
+
+
 #!Cách làm pro: Dict conprehension
-dic = {"k1":1, "k2":'', "k3":3, "k4":"", "k5":''}
+dic = {"k1":1, "k2":'', "k3":3, "k4":None, "k5":0,"k6":"      "}
 
 # "Tạo dict mới gồm k và v, lấy từ dic1, với điều kiện v khác rỗng"
-sach_se = {k: v for k, v in dic.items() if v != ""}
+sach_se = {k: v for k, v in dic.items() if v or v ==0} #! nhưnng như vậy sẽ lấy " ", dù loại bở None và giữ lại số 0
+sach_se_nhat={k: v for k, v in dic.items() if v is not None and str(v).strip()}
           #(keys:value) tương ứng với (key, value) in dic.items() 
 print(sach_se)
+
+
+dic={"k1":1,"k2":2,"k3":3,"k4":"","k5":"","k6":"    ","k7":None }
+moi={}
+for k in dic:
+    if str(dic[k]).strip()!='' and dic[k] is not None:
+        moi.update({k:dic[k]})
+print(moi)
+
+for k,v in dic.items():
+    if v is not None and str(v).strip():
+        moi[k]=v
 
 
 
@@ -84,7 +156,7 @@ while i<len(d_list):
     k,v=d_list[i]
     ds.append((v,k))
     i+=1
-print(set(ds))
+print(dict(ds))
 
     #!C2: Dùng zip: ghép 2 danh sách riêng biệt(keys và values) thành từng cặp tạo dict
     #?: dict(zip(keys,values))
@@ -92,6 +164,11 @@ ds_1=dict(zip(d.values(),d.keys()))
 
     #!C3: Dict conprehension
 ds_2={v:f for f,v in d.items()}
+
+    #!C4:
+ds={}
+for k,v in d.items():
+    ds[v]=k
 
 
 
@@ -109,24 +186,21 @@ while i<len(menu):
     i+=1
 print(ds_mon)
 
+#!HOẶC
+for k,v in menu:
+    ds_mon[k]=v
+print(ds_mon)
+
+#!HOẶC
+menu_moi={k:v for k,v in menu}
+
+    
+
 
 
 
 
 #cho một câu tiếng anh, đếm ký tự in ra dict
-#! Làm cách này mỗi lần đến ký tự tiếp theo lại phải chạy i một vòng ( sẽ có những thao tác thừa)
-cau=input().lower()
-dic={}
-i=97
-print(cau)
-while 97<=i<=122:
-    kytu=chr(i)
-    dem=cau.count(kytu)
-    if dem:
-        dic[kytu]=dem
-    i+=1
-print(dic)
-
 #! Cách tối ưu hơn: Dùng get(key,default)
 cau=input().lower()
 dic={}
@@ -137,14 +211,14 @@ while i<len(cau):
         dic[kt]=dic.get(kt,0)+1
     i+=1
 print(dict(sorted(dic.items()))) #!sorted hàm sắp xếp áp dụng được với mọi đối tượng
-print(dic)                     #!không làm thay đổi bản gốc 
+print(dic)                       #!không làm thay đổi bản gốc 
 
 #!Cách khác:
-cau=input().lower()
+cau="hhsdahhac jacsjdacajs "
 dic={}
-for ktu in cau:       #for chạy từng ký tự trong cau
-    if ktu.isalpha(): #kiểm tra xem có phải chữ hay không
-        dic[kt]=dic.get(ktu,0)+1
+for char in cau.strip().lower():
+    if char.strip()!='':          #bỏ dấu cách
+        dic[char]=dic.get(char,0)+1
 print(dict(sorted(dic.items())))
 
 
@@ -155,11 +229,9 @@ print(dict(sorted(dic.items())))
 don1={"A":1,"B":2,"C":5,"D":6}
 don2={"S":1,"B":4,"C":1}
 for k,v in don1.items():
-    if k in don2:
-        don2[k]+=don1[k]
-    else:
-        don2[k]=don1[k]
+    don2[k]=don2.get(k,0) +don1[k]
 print(don2)
+
 
 #!Cách 2:
 for k,v in don1.items():
@@ -190,9 +262,24 @@ while i < len(lis):
     elif isinstance(item, str):# Kiểm tra nếu là chuỗi
         chuoi.append(item)        
     i += 1
-print("Nguyên:", nguyen) 
-print("Thực:", thuc)     
-print("Chuỗi:", chuoi)
+
+#!HOẶC
+lis1=[i for i in lis if isinstance(i,int)]
+lis2=[i for i in lis if isinstance(i,float)]
+lis3=[i for i in lis if isinstance(i,str)]
+
+#! C1 duyệt qua một lần nhưng phải quản lý qua biến đếm thủ công, duyệt qua 3 lần nếu nhiều biến làm giảm hiệu suất
+lis = [3, 5, 5.6, "zxc", 10.5, 'Jyno']
+nguyen, thuc, chuoi = [], [], []
+for item in lis:
+    if isinstance(item, int):# Kiểm tra nếu là số nguyên
+        nguyen.append(item)
+    elif isinstance(item, float):# Kiểm tra nếu là số thực
+        thuc.append(item)
+    elif isinstance(item, str):# Kiểm tra nếu là chuỗi
+        chuoi.append(item)        
+
+
 
 
 
@@ -234,6 +321,38 @@ while True:
 
 
 
+inventory = {"Coca": [15, 5],"Pepsi": [15, 0],"Water": [10, 2],"Coffee": [20, 10]}
+menu=list(enumerate(inventory.keys(),1))
+while True:
+    for i,item in menu:
+        cost, quantity=inventory[item]
+        status=f"{cost}k" if quantity>0 else "Out of stock"
+        print(f"{i}.{item:<10}:{quantity:^3}|{status:<10}")
+    try:
+        print("0.Exit system")
+        choice=int(input("\nOption: "))
+        if choice==0:
+            break
+        idx = choice -1
+        if not 0<=choice -1<len(menu):
+            print("The option does not exist.")
+            continue
+        else:
+            beverage=menu[idx][1]
+            gia,sl=inventory[beverage]
+        while True:
+            sl_m=int(input("Nhập số lượng mua: "))
+            if not 0<sl_m<=sl:
+                print("Nhập lại số lượng mua: ")
+                continue
+            else:
+                thanh_toan=sl_m*gia
+                print(f"Số tiền cần thanh toán: {thanh_toan}")
+                inventory[beverage][1]-=sl_m
+                break
+    except ValueError:
+        print("Please enter your selection.")
+        continue
 
 
 #Từ điển Anh-Việt: Cho người dùng nhập cặp từ vựng. Lưu vào Dict. Sau đó cho phép người dùng nhập từ tiếng Anh để tra nghĩa.
@@ -265,8 +384,6 @@ else:
 
 
 
-#Quản lý điểm số: Tạo một List chứa các Dict. Mỗi Dict là một học sinh: {"tên": "An", "điểm": 8}. 
-#Hãy duyệt qua và in ra tên những bạn có điểm trên 5, bạn nào dưới 5 thì thêm vào một Set "cần phụ đạo"
 danh_sach_hs = [
     {"ten": "An", "diem": 8.5, "chuyen_can": 10},
     {"ten": "Bình", "diem": 4.0, "chuyen_can": 9},
@@ -286,6 +403,12 @@ for hs in danh_sach_hs:
         xep_hang='kha'
     print(f"Họt sinh: {ten:<6}\nXếp hạng: {xep_hang} với điểm tổng là: {round(diem_tong,1):<4} ")
     #!Căn lề bằng f-string: {biến:[ký tự lấp đầy][căn lề][độ rộng] }, ở 2 bên ngoài cùng nếu chuỗi tự căn cái, nếu số tự căn phải
+
+gioi,tb,yeu=[],[],[]
+for u in ds_hs:
+    ten=u["ten"] #!AN TOÀN HƠN NẾU DÙNG: a,b,c=u.values() !Nếu ai đó thay đổi thứ tự trong dict thì sẽ làm sai phép tính
+    diem_tb=round(u["diem"]*0.7+0.3*u["chuyen_can"],1)
+    gioi.append(ten) if diem_tb>8 else yeu.append(ten) if diem_tb<=5 else tb.append(ten)
 
 
 
@@ -319,11 +442,27 @@ for user in he_thong_user:
     print(f"|{ten:10}|{len(mk):^20}|{muc_do:>10}|")
     tong_dn+=user["lan_dang_nhap"]
     if user["lan_dang_nhap"]>max2:
-        nguoi_dang_nhap_max=user["user"]
+        nguoi_dang_nhap_max=user["user"] #!lấy tên người đăng nhập nhiều nhất
         max2=user["lan_dang_nhap"]
 print("số lần đăng nhập nhiều nhất:",max2)
 print("trung bình lượng đăng nhập:",round(tong_dn/(len(he_thong_user))))
 print(nguoi_dang_nhap_max)
+
+
+#!HOẶC
+print("|{:10}|{:^20}|{:>10}|".format("user","độ dài pass","đánh giá"))
+tong_dn=0
+for user in he_thong_user:
+    ten,mk=user["user"],user["pass"]
+
+    muc_do="mạnh" if len(mk)>10 else "yếu" if len(mk)<6 else "trung bình"
+    print(f"|{ten:10}|{len(mk):^20}|{muc_do:>10}|")
+
+    tong_dn+=user["lan_dang_nhap"]
+    
+dn_max=max(he_thong_user, key=lambda x:x["lan_dang_nhap"])
+print(f"{dn_max['user']} với số lần đăng nhập max: {dn_max['lan_dang_nhap']}")
+print(f"Số lần đăng nhập tb: {tong_dn//len(he_thong_user)}")
 
 
 
