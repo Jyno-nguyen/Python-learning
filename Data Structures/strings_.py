@@ -147,6 +147,13 @@ print(f'{n+m=}') # kết quả sẽ in ra n+m=30 ( cho phép thực hiện phép
 import math
 print(f"{math.pi:.2f}") #3.14
 
+#!Kết hợp 
+print(f"{'%s':^10}"  %("ha"))
+
+
+
+
+
     #?ĐỊNH DẠNG BẰNG PHƯƠNG THỨC FORMAT
 s='a:{},b:{},c:{}'.format(2,4,5) #Trong ngoặc có thể điền nhiều số hơn nhưng không được thiếu, và số thứ tự đánh từ (0 đến n-1)
 print(s) # a:2,b:4,c:5
@@ -159,9 +166,9 @@ s4='a:{two},b:{one},c:{}'.format(one=111,two=222) #a:222,b:111
 
 #Căn lề bằng format: Căn vè bên nào tức là để ký tự/chuỗi về bên đấy trước xong điền vào chỗ trống
 
-'{:(c)^10}'.format('aaaa') #Căn lề giữa, chừa 10 đơn vị căn 'aaaa' vào giữa và chỗ trống bù đắp bằng (c)(nếu không điền thì sẽ tự động để trống)
-'{:(c)>10}'.format('aaaa') #Căn lề phải, tương tự
-'{:(c)<10}'.format('aaaa') #Căn lề trái
+'{:c^10}'.format('aaaa') #Căn lề giữa, chừa 10 đơn vị căn 'aaaa' vào giữa và chỗ trống bù đắp bằng (c)(nếu không điền thì sẽ tự động để trống)
+'{:c>10}'.format('aaaa') #Căn lề phải, tương tự
+'{:c<10}'.format('aaaa') #Căn lề trái
 r='nguyen viet {:*^10} dep trai'.format("ha")
 print(r) #nguyen viet ****ha**** dep trai
 print("{:#>10.2f}".format(12.3)) #có thể kết hợp nếu muốn lấy số phần tập phân khi dùng format

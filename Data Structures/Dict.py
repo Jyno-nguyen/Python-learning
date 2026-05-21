@@ -30,12 +30,6 @@ dic = dict(name='Ha', member=69) #Biến này không bị ảnh hưởng hoặc 
 print(name,member)                  #'vietha', 36
 
 
-#? Khởi tạo bằng fromkeys(iterable,default)
-iter_ = ('ha', 36)
-dic_none = dict.fromkeys(iter_) #{'ha': None, 36: None}
-dic = dict.fromkeys(iter_, 'đz') #{'ha': 'đz', 36: 'đz'}
-
-
 #? Lấy value trong dict
 dic={"ten":"vietha","nhìn": "đz"} 
 print(dic["ten"]) #vietha
@@ -118,11 +112,35 @@ user.setdefault("country", "Vietnam")  # thêm được
 user.setdefault("name", "abc")         # không thêm vì "name" đã có!
 
 # C6: merge dict (Python 3.9+)
-user = user | {"job": "AI Engineer"}
+user = user | {"job": "AI Engineer"} 
+#!Nếu trùng key ưu tiên lấy đè của d2: user=user | d2
 
 
 
+    #dict.fromkeys()
+#!Tạo dict nhanh
+hoc_sinh = ["An", "Bình", "Chân"]
+so_diem_danh = dict.fromkeys(hoc_sinh, "Vắng") # Tạo dict nhanh với giá trị mặc định là "Vắng"
+print(so_diem_danh) # Kết quả: {'An': 'Vắng', 'Bình': 'Vắng', 'Chân': 'Vắng'}
+#!Nếu không truyền default=None
+print(dict.fromkeys(["A", "B"]))  # Kết quả: {'A': None, 'B': None}
 
+
+#!Lọc trùng arr
+def remove_duplicates_v3(lst):
+    # dict.fromkeys() lọc trùng và giữ thứ tự, list() biến nó lại thành mảng
+    return list(dict.fromkeys(lst))
+
+print(remove_duplicates_v3([1, 3, 2, 3, 1, 4, 2]))
+# Kết quả: [1, 3, 2, 4]
+
+
+#!LƯU Ý: 
+lop_hoc = dict.fromkeys(["An", "Bình"], []) # Bạn muốn tạo một sơ đồ lớp học, mỗi bạn giữ một danh sách điểm rỗng
+lop_hoc["An"].append(10) # Bây giờ bạn thêm điểm 10 cho bạn An
+print(lop_hoc) # Kết quả bất ngờ: {'An': [10], 'Bình': [10]} -> Ủa, sao Bình cũng bị 10 điểm?!! 
+#!Nó không tạo ra các list riêng biệt cho từng ngừoi mà nó chỉ tạo ra một list rồi tất cả đều trỏ vào list đó nên nếu chỉnh sửa của 1 người sẽ chỉnh sửa hết
+#!Chỉ nên dùng fromkeys() khi giá trị mặc định là các kiểu dữ liệu không thể bị sửa đổi (như Số, Chuỗi, None, True/False).
 
 
 

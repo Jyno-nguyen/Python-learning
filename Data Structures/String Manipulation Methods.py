@@ -1,21 +1,20 @@
 #Capitalize(): viết hoa chữ cái đầu tiên của chuỗi và các chữ cái còn lại viết thường
 c="nguyen viet ha dep trai"
 d=c.capitalize() #Nguyen viet ha.... (bắt buộc phải bắt đầu bằng chữ và mọi chữ khác nếu viết hoa ngoài chữ cái đầu sẽ chuyển về viết thường)
-                 #c. là để gọi hàm ra kết hợp với nó để thực hiện lệnh
     #Upper(): Tất cả viết hoa
     #Lower(): Tất cả các chữ viết thường
     #swapcase(): Chuyển từ viết hoa thành viết thường và viết thường thành viết hoa
-    #title(): trả về tiêu đề ( tức là viết hoa chữ cái đầu tiên của các chữ còn lại là viết thường )
+    #title(): trả về tiêu đề ( viết hoa chữ cái đầu tiên của các chữ )
 
 
-    #center(width,[fillchar]): width: bắt buộc phải điền cái còn lại có hoặc không đều được
+    #center(width[,fillchar]): width: bắt buộc phải điền cái còn lại có hoặc không đều được
 e=c.center(30) # chừa 30 ô hiển thị và c nằm giữa, vì fillchar không điền nên nó là khoảng trống
 f=c.center(30,'a') # điền a vào khoảng trắng 2 bên và fillchar là chuỗi phải có độ dài là 1 
     #rjust(width,[fillchar]): căn lề trái
     #ljust(width,[fillchar]): căn lề phải
 
 
-    #strip(): loại bỏ khoảng trắng thừa ( đầu dòng và cuối dòng), nếu điền ký tự bên trong sẽ cắt ký tự 2 đầu đi( nếu có )
+    #strip(): loại bỏ khoảng trắng thừa ( đầu dòng và cuối dòng)
               #Nếu điền nhiều ký tự bên trong nó sẽ phân tách ra từng ký tự rồi xoá nếu có 
 print("apple".strip("lpea")) #kết quả là rỗng
     #lstrip(): chỉ xoá khoảng trắng bên trái/xảy ra tương tự nếu điều ký tự/chuỗi bên trong strip()
@@ -33,7 +32,7 @@ h=g.join(['a','b','c'])
     #split(): xoá các ký tự đặt trong dấu ngoặc và chia thành các chuỗi nhỏ hơn nếu có
 k=c.split() #['nguyen','viet','ha','dep','trai']
 l=c.split('e') #['nguy','n vi','t ha d','p trai']
-m=c.split('e',2) #chỉ cắt 2 lần (nếu để không coi như cắt hết)
+m=c.split('e',2) #chỉ cắt 2 lần 
     #rsplit(): cắt từ bên phải qua
 #? Lấy phần tử bên trong && và %%: s='jhahsfhAKFSJFJSf &&1234%% JJADHJAJD'
 # code = s.split('&&')[-1].split('%%')[0]
@@ -73,6 +72,5 @@ print("42".zfill(7)) #0000042
     #isnumeric(): kiểm tra xem số có phải dạng chuỗi hay không (có thể có phân số)(RỘNG NHẤT) VD:1/2;số la mã;...
     #!Lưu ý: chỉ kiểm tra được CHUỖI, KIỂM TRA SỐ SẼ BỊ MẮNG
 
-    #sorted(): sắp xếp lại thứ tự ký tự từ thấp lên cao
 
 

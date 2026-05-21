@@ -27,24 +27,6 @@ while 1:
 
 
 
-#? Vòng for chỉ là cách viết gọn hơn của quá trình trên.
-
-# String
-for ky_tu in "Python":
-    print(ky_tu)  # P, y, t, h, o, n
-
-# Tuple
-for x in (1, 2, 3):
-    print(x)
-
-# Dictionary
-for key in {"ten": "An", "tuoi": 20}:
-    print(key)  # ten, tuoi
-
-# Range
-for i in range(3):
-    print(i)  # 0, 1, 2
-
 
 
 #? Cách để tạo ra 1 iterator
@@ -66,6 +48,7 @@ next(it) #lúc này con trỏ đã đưa về cuối nên next() sẽ không tr�
 
 
 #? max/min(iterable, *[, default=obj, key=func]): tìm max/min và trả về default nếu không có giá trị
+
 max([1, 2, 3]) #3
 min([1, 2, 3], default='default value') #1
 max([], default='default value') #'default value'

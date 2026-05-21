@@ -22,7 +22,7 @@ print(round(x, 2)) # 3.33 (làm tròn 2 chữ số)
 print(round(x, 4)) # 3.3333
   #LƯU Ý:#Có sai số vd 3.455=3.4549999999 nên muốn làm tròn chính xác có thể dùng Decimal("số cần làm tròn")
          #khi làm tròn với round(1.5)=2 và round(2.5)=2 vì Python ưu tiên làm tròn đến số chẵn gần nhất .5
-  #Hoặc dùng format: GIÁ TRỊ THẬT VẪN GIỮ NGUYÊN, chỉ thay đổi hiển thị
+  #Hoặc dùng f-string: GIÁ TRỊ THẬT VẪN GIỮ NGUYÊN, chỉ thay đổi hiển thị
 print(f"{x:.2f}")  # 3.33
 print(f"{x:.4f}")  # 3.3333
 
@@ -51,6 +51,7 @@ m.trunc(3.9) #trả về số nguyên là phần nguyên của số x
 m.gcd(6.4) #trả về số nguyên là ước chung lớn nhất của 2 số x và y
               #Thuật toán Euclid là phương pháp hiệu quả nhất để tìm ước chung lớn nhất (ƯCLN) của hai số nguyên dương 
               #a và b bằng cách liên tục chia số lớn cho số nhỏ và lấy phần dư. Thuật toán dừng lại khi số dư bằng 0, và ƯCLN là số chia cuối cùng khác 0
+m.lcm(4,5) #trả về bội chung nhỏ nhất              
 """ 
 float("1,000"): ERROR vì không dùng dấu , để ngăn cách hàng nghìn
 """

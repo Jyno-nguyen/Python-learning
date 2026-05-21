@@ -72,3 +72,25 @@ for time, _, _, _, message in data:
 lessons = ["Biến", "Kiểu dữ liệu", "Vòng lặp", "Xử lý file"]
 for i, bài in enumerate(lessons, start=1): #Bài 1,....
     print(f"Bài {i}: {bài}")
+
+
+
+#! Break,continue
+s = 'How Kteam'
+for ch in s:
+     if ch == ' ':
+         continue
+         break
+     else:
+         print(ch)
+
+
+
+
+#! FOR - ELSE: chạy hết for-brock rồi đến else-brock
+#for variable_1, variable_2, .. variable_n in sequence:
+    # for-block
+    # break: 
+    #!thoát vòng lặp luôn, không chạy else-brock
+#else:
+    # else-block

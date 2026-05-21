@@ -17,7 +17,7 @@ print(matrix) #[[0, 1], [0, 1], [0, 1]]
 
 
 
-#? e=list(iterable): Nghiên cứu thêm sau
+#? e=list(iterable): 
 list=list('nguyen viet ha') #!đây gọi là list contructor
 print(list) #['n', 'g', 'u', 'y', 'e', 'n', ' ', 'v', 'i', 'e', 't', ' ', 'h', 'a']
 
@@ -69,7 +69,7 @@ d = list(c) # Hoặc d = c.copy()
 
 # Trường hợp A: Thay đổi phần tử lớp ngoài (Số, Chuỗi)
 d.append("New Item") 
-# -> c không đổi, vì lớp vỏ (danh sách lớn) đã độc lập.
+# -> ổc không đi, vì lớp vỏ (danh sách lớn) đã độc lập.
 
 # Trường hợp B: Thay đổi phần tử bên trong List con
 d[0][0] = 77 
@@ -77,7 +77,7 @@ print(f"Gốc c: {d}") # BỊ ĐỔI thành [[77, 2], [3, 4]]
 print(f"Bản d: {c}") # Đã đổi
 
 # 3. SAO CHÉP SÂU (Deep Copy) - Nhân bản toàn bộ mọi cấp độ
-# Cần import copy
+import copy
 e = [[1, 2], [3, 4]]
 f = copy.deepcopy(e)
 
@@ -128,9 +128,9 @@ f=["nguyen","viet"]
 cong=e+f #có thể cộng nhiều chuỗi với nhau: [1,2,"nguyen","viet"]
 e += 'abc'  # cộng List và chuỗi
 #[1, 2, 'a', 'b', 'c']
-chuoi='abc' + [1, 2]  # List cộng chuỗi cho phép, chuỗi cộng List thì không.
+chuoi='abc' + [1, 2]  #! List cộng chuỗi cho phép, chuỗi cộng List thì không.
 
-nhan=e*2 #[1,2,1,2] nhưng không thể nhân 2 list với nhau 
+nhan=e*2 #! [1,2,1,2] nhưng không thể nhân 2 list với nhau 
 
     #Toán tử in
 print(1 in e)  #toán tử in kiểm tra xem có nằm trong list không

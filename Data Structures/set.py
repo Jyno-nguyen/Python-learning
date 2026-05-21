@@ -41,7 +41,7 @@ set1.symmetric_difference(set2) #{3,4,(1,2,4)}
 
 #?CÁC PHƯƠNG THỨC
 #clear():   xoá set
-#pop():     #! vì set không có thứ tự nên mặc định sẽ xoá phần tử đầu tiên của set
+#pop():     #! vì set không có thứ tự nên mặc định sẽ xoá random
             #cho một danh sách với số thứ tự từ 1-n, mỗi lần xoá 1 tên và in ra Tên & STT cho đến hết ds
 #remove():  xoá phần tử muốn
             #!không có sẽ báo lỗi

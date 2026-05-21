@@ -42,6 +42,13 @@ git commit -m "hôm nay làm gì"
 git push
 
  !git add . && git commit -m "Day n update" && git push
+
+ #! ĐẨY CẢ FOLDER LÊN GITHUB
+ # git add ten_folder/
+ # git commit -m "description (mô tả)"
+ # git push origin main
+
+
 """
 
 
@@ -67,4 +74,37 @@ git push
     python3: Mo Python shell (goi lenh truc tiep)
     pip3 install ten-thu-vien: Cai them thu vien Python
 
+#*Tính toán nhanh tên terminal
+>>> 5 + 5
+10
+>>> _ * 2    # Dấu _ lúc này tự hiểu là số 10 ở trên
+20
+>>> _ + 100  # Dấu _ lúc này lại là số 20 vừa tính xong
+120
+
 """
+
+
+# ! ĐỎ: LỆNH QUAN TRỌNG/CẢNH BÁO (DÙNG KHI SAI LẦM)
+# ? XANH: GIẢI THÍCH Ý NGHĨA/MẸO DÙNG
+# * VÀNG: QUY TRÌNH LÀM VIỆC HÀNG NGÀY
+
+# * Đẩy code lên GitHub
+# ? Lệnh này giúp đồng bộ code từ máy Mac lên trên mạng
+# git push origin main
+
+#! UPDATE SAI 
+# ! CỨU HỘ 1: Hủy commit vừa ấn nhầm (Vẫn giữ nguyên code để chia lại)
+# ? Dùng khi lỡ commit chung tất cả file vào một cái tên không ưng ý
+# git reset --soft HEAD~1
+
+# ! CỨU HỘ 2: Bỏ file ra khỏi trạng thái chờ lưu (Unstage)
+# ? Dùng khi lỡ 'git add' nhầm file rác hoặc file chưa muốn lưu
+# git reset
+
+# ! CỨU HỘ 3: Ép GitHub nhận lịch sử mới (Force Push)
+# ? BẮT BUỘC dùng sau khi đã 'Reset' để ghi đè lịch sử cũ trên GitHub
+# git push -f origin main
+
+
+
