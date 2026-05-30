@@ -135,11 +135,11 @@ while True:
 
 
 #giải chức năng của thuật toán gcd(a,b): tìm UCLN của a,b
-a=input()
-b=input()
+a=int(input())
+b=int(input())
 while b!=0:
     a,b=b,a%b
-    print(f"UCLN: {a}")
+print(f"UCLN: {a}")
 
 #?Cách khác
 a_bandau,b_bandau=a,b
@@ -148,7 +148,7 @@ while a!=b:
         a=a-b
     elif b>a:
         b=b-a
-    print(f"ƯCLN của hai số {a_bandau} và {b_bandau} la: {a}")
+print(f"ƯCLN của hai số {a_bandau} và {b_bandau} la: {a}")
 
 
 
