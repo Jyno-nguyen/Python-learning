@@ -6,7 +6,7 @@ print(nhap1[-1]+nhap1[1:-1]+nhap1[0])
 nhap2_1=input().strip().lower()
 print(nhap2_1[::-1]==nhap2_1)
     #Bài 2_2: Kiểm tra chuối đối xứng (...), không tính khoảng trắng ở giữa
-nhap2_2=input().strip().lower()
+nhap2_2=input().lower()
 xoa_khoang_cach=nhap2_2.replace(' ','')
 print(xoa_khoang_cach[::-1]==xoa_khoang_cach)
     #!Bài 3: Kiểm tra email hợp lệ
@@ -23,8 +23,20 @@ for c in a:
         result+=c
 print(result)
 
+#!HOẶC
+a = 'jasjfhasf ZAHzH' * 100000
 
-    #Bài 5: tìm ký tự xuất hiện nhiều nhất
+# Tạo bản đồ dịch chuyển ký tự (dịch phải 1 đơn vị)
+# abc...xyz -> bcd...yza
+nguon = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+dich  = "bcdefghijklmnopqrstuvwxyzaBCDEFGHIJKLMNOPQRSTUVWXYZA"
+
+bang_ma_hoa = str.maketrans(nguon, dich)
+
+# Mã hóa toàn bộ chuỗi ngay lập tức, không cần vòng lặp for
+result = a.translate(bang_ma_hoa)
+print(result[:30])
+
 
     #Bài 6: Kiểm tra anagram (là cùng ký tự nhưng cách sắp xếp khác nhau)
 s1=input().replace(' ','').lower()

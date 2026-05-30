@@ -49,7 +49,7 @@ lst3=sum(lst1,[])
 
 
 
-#* TASK7: nhập n in ra số nguyên từ 2<n
+#* TASK7: nhập n in ra số nguyên tố từ 2<n
 n=int(input())
 ds_songuyen=([2] if n>=2 else [])+[m for m in range(3,n+1,2) if all(m%i!=0 for i in range(2,int(m**0.5)+1))]
 
@@ -189,7 +189,7 @@ matrix = [[1,2,5,6],[3,4,1,2],[5,6,9,5],[1,2,3,4]]
 # 'dong' là từng list nhỏ, 'so' là từng con số nằm trong 'dong' đó
 lon_nhat = max(so for dong in matrix for so in dong)
 
-
+#*Tìm list chỉ có số chẵn
 matrix=[[2,2,4,6],[3,4,1,2],[5,6,9,5],[1,2,3,4]]
 chan=[dong for dong in matrix if all(so%2==0 for so in dong)]
 print(chan)

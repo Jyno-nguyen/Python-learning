@@ -70,9 +70,8 @@ for row in matrix:
           #!n=1.234{n:0<8.2f} => 1.230000 (. cũng tính là 1 ký tự)
           #!{1243143:,} =>1,243,143
           #!{1234.456:0<13,.4f} "1,234.4600000"
-
 n = int(input('Enter size of matrix: '))
-dx, dy = 1,0
+dx, dy = 0,1
 x, y = 0,0
 spiral_matrix = [[None] * n for j in range(n)]
 for i in range(n ** 2):
@@ -81,16 +80,11 @@ for i in range(n ** 2):
     if 0 <= nx < n and 0 <= ny < n and spiral_matrix[nx][ny] == None:
         x, y = nx, ny
     else:
-        dx, dy = -dy, dx
-        x, y = x + dx, y + dy
-
-for y in range(n):
-    for x in range(n):
-        print("%02i" % spiral_matrix[x][y], end=' ')
-    print()
-
-print()
-
+        dx, dy = dy, -dx
+        x,y = x + dx, y + dy
+for row in spiral_matrix:
+    final= [f"{num:0>2d}" for num in row ]
+    print(" ".join(final))
 
 
 
