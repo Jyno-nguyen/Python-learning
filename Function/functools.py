@@ -69,3 +69,5 @@ print(reduce(lst_add,lst4,10)) #((((10+1)+2)+3)+4)=20
 lst_multi=lambda x,y:x*y
 print(reduce(lst_multi,lst4)) #10*1*2*3*4
 
+
+
