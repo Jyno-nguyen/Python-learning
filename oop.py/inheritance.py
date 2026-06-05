@@ -36,7 +36,7 @@ class sieu_nhan:
         seft.mau=mau
 class sieu_nhan_gao(sieu_nhan):  
     def __init__(seft,ten,mau,vk):
-        super().__init__(ten,mau) #class cha có gì thì cần truyền hết vào không hơn không kém
+        super().__init__(ten,mau) #?class cha có gì thì cần truyền hết vào không hơn không kém
         seft.vk=vk                #Thêm phần còn thiếu
 gao_do=sieu_nhan_gao("Siêu nhân gao đỏ","Đỏ","Búa") 
 
@@ -61,6 +61,7 @@ print(gao_do.mau) # chuỗi rỗng
 
 
 #? KẾ THỪA PHƯƠNG THỨC
+#!ghi đè phương thức override
 class cha:
     def thong_tin(self):
         print("Đang đi đón con")
@@ -177,3 +178,5 @@ dua_be.thong_tin_chung()   # "Ta là Cha đây!" vì SieuNhanCha được viết
 
 print(SieuNhanCon.__mro__) # Dòng này để xem thứ tự ưu tiên tìm kiếm phương thức của Python
                            #<class '__main__.SieuNhanCon'>, <class '__main__.SieuNhanCha'>, <class '__main__.SieuNhanMe'>, <class 'object'>)
+
+
