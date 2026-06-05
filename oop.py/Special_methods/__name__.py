@@ -37,3 +37,49 @@ print(f"[Bên trong main.py] Biến __name__ đang có giá trị là: '{__name_
 #? import file.py
 
 
+
+
+
+
+#* .__name__ : dunder attribute 
+
+class Shape:
+    pass
+    
+class Circle(Shape):
+    pass
+
+class Rectangle(Shape):
+    pass
+
+class Triangle(Shape):
+    pass
+if __name__ == "__main__":
+    shapes = [Circle(radius=5), Rectangle(width=10, height=5), Triangle(a=3, b=4, c=5)]
+area_max=max(shapes,key=lambda s: s.area())
+print(f"{type(area_max).__name__} has max area: {area_max.area()}")
+
+#!Muốn lấy tên của class
+"""Khi bạn có một Class tên là Circle
+   print(Circle) #<class '__main__.Circle'>.
+   #*.__name__(một thuộc tính ẩn trong class/dunder attribute), nó chỉ bóc tách đúng cái tên sạch dạng chuỗi ra thôi
+   area_max là instance. Hàm type(area_max) sẽ kiểm tra xem instance thuộc Class nào → Nó trả về Class Circle.
+   Khi đã có Class Circle rồi, .__name__ để lấy ra chữ "Circle" dạng chuỗi nhằm mục đích in ra màn hình cho đẹp.
+   #!Bạn chỉ có thể dùng .__name__ trên Class hoặc Hàm, chứ không thể dùng trực tiếp trên một đối tượng (instance)."""   
+
+#* Ví dụ KHI DÙNG VỚI HÀM.__name__
+def nap_tien():
+    pass
+
+def rut_tien():
+    pass
+
+def nhat_ky_he_thong(ham_muc_tieu):
+    # ham_muc_tieu là một cái hàm được truyền vào như một tham số
+    ten_ham = ham_muc_tieu.__name__ # Ta dùng .__name__ để bóc ra cái tên dạng chữ của hàm đó
+    print(f"🚨 CẢNH BÁO: Người dùng vừa kích hoạt tính năng -> [{ten_ham}]")
+    
+if __name__ == "__main__":
+    nhat_ky_he_thong(nap_tien) #🚨 CẢNH BÁO: Người dùng vừa kích hoạt tính năng -> [nap_tien]
+    nhat_ky_he_thong(rut_tien) #🚨 CẢNH BÁO: Người dùng vừa kích hoạt tính năng -> [rut_tien]
+ 
